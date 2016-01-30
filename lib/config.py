@@ -1,0 +1,94 @@
+import sys
+import os
+
+"""Variables prefixed with `DEFAULT` should be able to be overridden by
+configuration file and command‐line arguments."""
+
+UNIT = 100000000        # The same across assets.
+
+
+# Versions
+VERSION_MAJOR = 9
+VERSION_MINOR = 39
+VERSION_REVISION = 0
+VERSION_STRING = str(VERSION_MAJOR) + '.' + str(VERSION_MINOR) + '.' + str(VERSION_REVISION)
+
+
+# Counterparty protocol
+TXTYPE_FORMAT = '>I'
+
+TWO_WEEKS = 2 * 7 * 24 * 3600
+MAX_EXPIRATION = 4 * 2016   # Two months
+
+MEMPOOL_BLOCK_HASH = 'mempool'
+MEMPOOL_BLOCK_INDEX = 9999999
+
+
+# SQLite3
+MAX_INT = 2**63 - 1
+
+
+# Bitcoin Core
+OP_RETURN_MAX_SIZE = 40 # bytes
+
+
+# Currency agnosticism
+BTC = 'SCH'
+XCP = 'SHP'
+
+BTC_NAME = 'Shellcoin'
+BTC_CLIENT = 'SatoshiChaind'
+XCP_NAME = 'Shellparty'
+XCP_CLIENT = 'shellpartyd'
+
+DEFAULT_RPC_PORT_TESTNET = 14411
+DEFAULT_RPC_PORT = 4411
+
+DEFAULT_BACKEND_RPC_PORT_TESTNET = 30135
+DEFAULT_BACKEND_RPC_PORT = 31100
+
+UNSPENDABLE_TESTNET = 'mtBurnBurnBurnBurnBurnBurnBurvozW8'
+UNSPENDABLE_MAINNET = 'Sburnburnburnburnburnburnburnvhudd'
+UNSPENDABLE = UNSPENDABLE_MAINNET
+
+ADDRESSVERSION_TESTNET = b'\x6F'
+# PRIVATEKEY_VERSION_TESTNET =
+ADDRESSVERSION_MAINNET = b'\x3F'
+# PRIVATEKEY_VERSION_MAINNET =
+MAGIC_BYTES_TESTNET = b'\x2a\x2b\x36\x42' # For bip-0010
+MAGIC_BYTES_MAINNET = b'\x3b\x42\x31\x24' # For bip-0010
+
+WIF_PREFIX_TESTNET = b'\xf1'
+WIF_PREFIX_MAINNET = b'\x99'
+
+BLOCK_FIRST_TESTNET_TESTCOIN = 165000
+BURN_START_TESTNET_TESTCOIN = BLOCK_FIRST_TESTNET_TESTCOIN
+BURN_END_TESTNET_TESTCOIN = 26280000    # Fifty years, at 1 minute per block.
+
+BLOCK_FIRST_TESTNET = BLOCK_FIRST_TESTNET_TESTCOIN
+BURN_START_TESTNET =  BURN_START_TESTNET_TESTCOIN
+BURN_END_TESTNET = 26280000             # Fifty years, at 1 minute per block.
+
+BLOCK_FIRST_MAINNET_TESTCOIN = 166000
+BURN_START_MAINNET_TESTCOIN = BLOCK_FIRST_MAINNET_TESTCOIN
+BURN_END_MAINNET_TESTCOIN = 26280000    # Fifty years, at 1 minute per block.
+
+BLOCK_FIRST_MAINNET = BLOCK_FIRST_MAINNET_TESTCOIN
+BURN_START_MAINNET = BURN_START_MAINNET_TESTCOIN
+BURN_END_MAINNET = 26280000    # 30 days burn period with 1 min target time per block.
+
+MAX_BURN_BY_ADDRESS = 500 * UNIT 	# 500 SCH.
+BURN_MULTIPLIER = 10000 				        # 
+
+# Protocol defaults
+# NOTE: If the DUST_SIZE constants are changed, they MUST also be changed in counterblockd/lib/config.py as well
+DEFAULT_REGULAR_DUST_SIZE = UNIT * 0.00010000		  # 1 SCH; there is not dust limit in Shellcoin, but every txout < 1 SCH, cost 1 SCH in fee
+DEFAULT_MULTISIG_DUST_SIZE = UNIT * 0.00010000 # 2 SCH.
+DEFAULT_OP_RETURN_VALUE = 0 			    # 0 SCH.
+DEFAULT_FEE_PER_KB = UNIT    * 0.00010000         # 1 SCH.
+
+
+# UI defaults
+DEFAULT_FEE_FRACTION_REQUIRED = .009   # 0.90%
+DEFAULT_FEE_FRACTION_PROVIDED = .01    # 1.00%
+
